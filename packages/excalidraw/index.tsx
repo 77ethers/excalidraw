@@ -292,6 +292,10 @@ export { DefaultSidebar } from "./components/DefaultSidebar";
 export { TTDDialog } from "./components/TTDDialog/TTDDialog";
 export { TTDDialogTrigger } from "./components/TTDDialog/TTDDialogTrigger";
 
+export { AIAssistant } from "./components/AIAssistant/AIAssistant";
+export { AIAssistantTrigger } from "./components/AIAssistant/AIAssistantTrigger";
+export { AISettings } from "./components/AISettings";
+
 export { zoomToFitBounds } from "./actions/actionCanvas";
 export { convertToExcalidrawElements } from "./data/transform";
 export { getCommonBounds, getVisibleSceneBounds } from "@excalidraw/element";
