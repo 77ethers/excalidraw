@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Island } from "../Island";
-import { useApp } from "../App";
+import { useApp, useExcalidrawSetAppState } from "../App";
 import { EditorLocalStorage } from "../../data/EditorLocalStorage";
 import { EDITOR_LS_KEYS } from "@excalidraw/common";
 import { OpenAIService, type AIMessage } from "../../ai/openai-service";
@@ -17,6 +17,7 @@ interface Message {
 
 export const AIAssistant: React.FC = () => {
   const app = useApp();
+  const setAppState = useExcalidrawSetAppState();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -87,9 +88,8 @@ export const AIAssistant: React.FC = () => {
 
   const handleInsertElements = (elements: ExcalidrawElement[]) => {
     if (elements && elements.length > 0) {
-      const sceneElements = app.scene.getElements();
-      app.scene.replaceAllElements([...sceneElements, ...elements]);
-      app.setToast({ message: "Drawing inserted!" });
+      app.onInsertElements(elements);
+      setAppState({ toast: { message: "Drawing inserted!" } });
     }
   };
 
@@ -101,7 +101,7 @@ export const AIAssistant: React.FC = () => {
   };
 
   const handleClose = () => {
-    app.setAppState({ openSidebar: null });
+    setAppState({ openSidebar: null });
   };
 
   if (showSettings) {

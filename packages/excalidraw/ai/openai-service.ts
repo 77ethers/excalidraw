@@ -1,6 +1,6 @@
 import type { ExcalidrawElement } from "@excalidraw/element/types";
 import { newElement, newTextElement } from "@excalidraw/element";
-import { randomInteger } from "@excalidraw/utils";
+import { randomInteger } from "@excalidraw/common";
 
 export interface AIMessage {
   role: "system" | "user" | "assistant";
@@ -162,18 +162,9 @@ export class OpenAIService {
             ...baseProps,
           });
           elements.push(shapeElement);
-        } else if (raw.type === "arrow" || raw.type === "line") {
-          const points = raw.points || [
-            [0, 0],
-            [raw.width || 100, raw.height || 100],
-          ];
-          const linearElement = newElement({
-            type: raw.type,
-            ...baseProps,
-            points: points.map(([x, y]: [number, number]) => [x, y]),
-          });
-          elements.push(linearElement);
         }
+        // TODO: Add support for arrows and lines in a future update
+        // Linear elements require more complex setup with points array
       } catch (error) {
         console.error("Failed to convert element:", raw, error);
       }

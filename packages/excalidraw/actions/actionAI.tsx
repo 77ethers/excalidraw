@@ -1,4 +1,4 @@
-import { StoreAction } from "../store";
+import { CaptureUpdateAction } from "@excalidraw/element";
 import { register } from "./register";
 
 export const actionToggleAIAssistant = register({
@@ -15,7 +15,7 @@ export const actionToggleAIAssistant = register({
             ? null
             : { name: "ai-assistant" as const },
       },
-      storeAction: StoreAction.CAPTURE,
+      captureUpdate: CaptureUpdateAction.EVENTUALLY,
     };
   },
   predicate: (elements, appState, props, app) => {
