@@ -37,6 +37,21 @@ export const AppMainMenu: React.FC<{
       )}
       <MainMenu.DefaultItems.CommandPalette className="highlighted" />
       <MainMenu.DefaultItems.SearchMenu />
+      <MainMenu.Item
+        icon="🤖"
+        onClick={() => {
+          const event = new KeyboardEvent("keydown", {
+            key: "K",
+            code: "KeyK",
+            ctrlKey: true,
+            metaKey: true,
+            bubbles: true,
+          });
+          document.dispatchEvent(event);
+        }}
+      >
+        AI Assistant (Ctrl/Cmd+K)
+      </MainMenu.Item>
       <MainMenu.DefaultItems.Help />
       <MainMenu.DefaultItems.ClearCanvas />
       <MainMenu.Separator />
