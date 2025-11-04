@@ -38,7 +38,7 @@ export const AppMainMenu: React.FC<{
       <MainMenu.DefaultItems.CommandPalette className="highlighted" />
       <MainMenu.DefaultItems.SearchMenu />
       <MainMenu.Item
-        icon="🤖"
+        icon={<span style={{ fontSize: "1.25rem" }}>🤖</span>}
         onClick={() => {
           const event = new KeyboardEvent("keydown", {
             key: "K",
